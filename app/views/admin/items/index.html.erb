@@ -1,4 +1,5 @@
 <h2>商品一覧</h2>
+<%= link_to "＋", new_admin_item_path %>
 
   <table class="table table-hover table-inverse">
 
@@ -18,7 +19,8 @@
         <td><%= item.id %></td>
         <td><%= link_to item.name, admin_item_path(item.id) %></td>
         <td><%= item.price %></td>
-        <td><%= genre.name %></td>
+        <td><%= @genre.name %></td>
       </tr>
+      <% end %>
     </tbody>
   </table>

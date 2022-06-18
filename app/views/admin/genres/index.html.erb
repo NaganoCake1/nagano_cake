@@ -1,6 +1,6 @@
 <h1>ジャンル一覧・追加</h1>
 
-    <%= form_with model: @genre_new, url: '/admin/genres', local:true do |f| %>
+    <%= form_with model: [:admin, @genre_new], local:true do |f| %>
 
       ジャンル名
 
