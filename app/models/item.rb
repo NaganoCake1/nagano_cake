@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
 
-has_one_attached :iamge
+has_one_attached :image
 
-has_many :genres
-belongs_to :user
+belongs_to :genre
+
 
 end

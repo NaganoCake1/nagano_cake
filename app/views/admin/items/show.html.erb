@@ -1,1 +1,42 @@
-<%= image_tag item.image, size: "200x200" %>
+<h2>商品詳細</h2>
+
+<%= image_tag @item.image, size: "200x200" %>
+
+<table class="table table-hover table-inverse">
+  <tbody>
+
+    <tr>
+      <td>
+        商品名
+        <%= @item.name %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        商品説明
+        <%= @item.introduction %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        ジャンル
+        <%= @item.genre.name %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        税込価格(税抜き価格)
+        <%= (@item.price*1.1).floor, (@item.price) %>
+
+      </td>
+    </tr>
+
+  </tbody>
+
+
+
+
+
