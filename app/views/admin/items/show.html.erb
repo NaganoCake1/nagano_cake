@@ -29,8 +29,14 @@
     <tr>
       <td>
         税込価格(税抜き価格)
-        <%= (@item.price*1.1).floor, (@item.price) %>
+        <%= (@item.price*1.1).floor %>
+        (<%= @item.price  %>)円
+      </td>
+    </tr>
 
+    <tr>
+      <td>
+        <%= link_to "編集する", edit_admin_item_path(@item.id) %>
       </td>
     </tr>
 
