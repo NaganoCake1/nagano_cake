@@ -1,0 +1,71 @@
+<h4>注文履歴詳細</h4>
+
+<table class="table table-hover table-inverse">
+
+  <tbody>
+
+    <tr>
+      <td>
+        購入者
+        <%= @customer.first_name %>
+        <%= @customer.last_name %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        注文日
+        <%= @order.create_at %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        配送先
+        <%= @customer.postal_code %>
+        <%= @customer.address %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        支払方法
+        <%= @order.payment_method %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        注文ステータス
+        <%= form_with model: @order, url: orders_path, do |form| %>
+          <%= form.select :payment_method_id, [['入金待ち', 1], ['入金確認', 2], ['製作中', 3], ['発送準備中', 4], ['発送済み', 5]], { include_blank: true, selected: 1 } %>
+        <% end %>
+        <%= @order.payment_method %>
+      </td>
+    </tr>
+
+  </tbody>
+
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%= @item.name %></td>
+      <td><%= (@item.price*1.1).floor %></td>
+      <td><%= order_detail.quantity %></td>
+      <td><%= (@item.price*order_detail.quantity) %></td>
+      <td><%= f.select :making_status, [["着手不可", "着手不可"], ["着手中", "着手中"], ["完了", "完了"]], include_blank: "着手不可" %></td>
+      <td><%= f,submit '更新' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

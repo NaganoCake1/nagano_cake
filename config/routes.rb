@@ -1,5 +1,30 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    resources :adress
+  end
+  namespace :public do
+   resources :orders
+  end
+  namespace :public do
+    resources :customers
+  end
+  namespace :public do
+    resources :items
+  end
+  namespace :admin do
+    resources :order_details
+  end
+  namespace :admin do
+    resources :orders
+  end
+  namespace :admin do
+    root to: 'homes#top'
+  end
+  namespace :public do
+    root to: 'homes#top'
+    get "/home/about" => "homes#about", as: "about"
+  end
   namespace :admin do
     resources :customers
   end

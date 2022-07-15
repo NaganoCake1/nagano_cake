@@ -1,4 +1,4 @@
-<h2><%= customer.name %>さんの会員詳細</h2>
+<h2><%= "#{@customer.last_name} #{@customer.first_name}" %>さんの会員詳細</h2>
 
 <table class="table table-hover table-inverse">
   <tbody>
@@ -32,25 +32,32 @@
         <%= @customer.postal_code %>
       </td>
     </tr>
-    
+
     <tr>
       <td>
         住所
-        <%= @customer.address %>
+        <%= @customer.adress %>
       </td>
     </tr>
-    
+
     <tr>
       <td>
         電話番号
         <%= @customer.telephone_number %>
       </td>
     </tr>
-    
+
     <tr>
       <td>
         メールアドレス
-        <%= @customer.email%>
+        <%= @customer.email %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        会員ステータス
+        <%= @customer.is_active %>
       </td>
     </tr>
 
@@ -61,3 +68,5 @@
     </tr>
 
   </tbody>
+
+</table>

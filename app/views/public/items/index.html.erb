@@ -1,0 +1,7 @@
+<h2>商品一覧</h2>()
+<% @items.each do |item| %>
+  <%= image_tag @item.image, size: "50x80" %>
+  <%= @item.name %>
+  <%= (@item.price*1.1).floor %>
+<% end %>
+

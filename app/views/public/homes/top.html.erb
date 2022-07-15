@@ -1,0 +1,12 @@
+ようこそ、ながのCAKEへ！</br>
+このサイトは、ケーキ販売のECサイトになります。</br>
+会員でない方も商品の閲覧はできますが、</br>
+購入には会員登録が必要になります</br>
+
+<h2>新着商品</h2>
+
+<% @items.each do |item| %>
+  <%= image_tag @item.image, size: "50x80" %>
+  <%= @item.name %>
+  <%= (@item.price*1.1).floor %>
+<% end %>
