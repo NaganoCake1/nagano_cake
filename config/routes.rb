@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
   namespace :public do
     resources :customers
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
   end
   namespace :public do
     resources :items
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
   namespace :public do
     root to: 'homes#top'
     get "/home/about" => "homes#about", as: "about"
+    
   end
   namespace :admin do
     resources :customers
