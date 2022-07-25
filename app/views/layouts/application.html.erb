@@ -31,7 +31,7 @@
               <ul class="navbar-nav ml-auto">
                 <% if admin_signed_in? %>
                   <li>
-                    <%= link_to items_path(current_user), class: "nav-link active" do %>
+                    <%= link_to admin_items_path, class: "nav-link active" do %>
                       商品一覧
                     <% end %>
                   </li>
@@ -41,7 +41,7 @@
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to admin_order_details_path, class: "nav-link active" do %>
+                    <%= link_to admin_orders_path, class: "nav-link active" do %>
                       注文履歴一覧
                     <% end %>
                   </li>
@@ -55,15 +55,37 @@
                       ログアウト
                     <% end %>
                   </li>
-                <% else %>
 
+                <% elsif customer_signed_in? %>
+                  <li>
+                    <%= link_to public_customer_path(current_customer), class: "nav-link active" do %>
+                      マイページ
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to public_items_path(current_customer), class: "nav-link active" do %>
+                      商品一覧
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to public_cart_items_path(current_customer), class: "nav-link active" do %>
+                      カート
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to destroy_customer_session_path,method: :delete, class: "nav-link active" do %>
+                      ログアウト
+                    <% end %>
+                  </li>
+
+                <% else %>
                   <li>
                     <%= link_to public_about_path, class: "nav-link active" do %>
                       About
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to admin_items_path, class: "nav-link active" do %>
+                    <%= link_to public_items_path, class: "nav-link active" do %>
                       商品一覧
                     <% end %>
                   </li>
@@ -77,8 +99,8 @@
                       ログイン
                     <% end %>
                   </li>
-
                 <% end %>
+
               </ul>
             </div>
           </div>
