@@ -1,6 +1,6 @@
 <table class="table table-hover table-inverse">
 
-  <%= form_with model: [:admin, @address], local:true do |f| %>
+  <%= form_with model: @address, url: public_addresses_path, local:true do |f| %>
 
   <tr>
     <td>

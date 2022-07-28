@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
   namespace :public do
-    resources :addresses
+    resources :addresses,only: [:index, :create, :show, :edit, :update, :destroy]
   end
 
   namespace :public do
