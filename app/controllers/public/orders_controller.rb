@@ -1,13 +1,16 @@
 class Public::OrdersController < ApplicationController
   def new
-    @order_new = Order.new
+    @order = Order.new
   end
 
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save
-    redirect_to public_order_path
+    if @order.save
+      redirect_to public_order_path
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -26,7 +29,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :postage, :status)
+    params.require(:order).permit(:customer_id, :payment_method, :postal_code, :address, :name, :postage, :status)
   end
 
 end
