@@ -12,8 +12,18 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-   resources :orders
+    resources :orders,only: [:new, :index, :histry] do
+
+      collection do
+        delete "destroy_all"
+      end
+    end
+    post "orders/check" => 'orders#check'
+    patch "orders/comfilm" => 'orders#create'
+    post "orders/complete" => 'orders#complete'
+
   end
+
   namespace :public do
     resources :customers
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
