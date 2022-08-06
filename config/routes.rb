@@ -19,9 +19,9 @@ Rails.application.routes.draw do
       end
     end
     post "orders/check" => 'orders#check'
-    patch "orders/comfilm" => 'orders#create'
-    post "orders/complete" => 'orders#complete'
-
+    post "orders/comfilm" => 'orders#comfilm'
+    get "orders/complete" => 'orders#complete'
+    get "orders/:id" => 'orders#histry', as: 'order/histry'
   end
 
   namespace :public do

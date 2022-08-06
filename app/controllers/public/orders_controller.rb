@@ -6,11 +6,11 @@ class Public::OrdersController < ApplicationController
   def check #注文情報確認画面
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    p @order #idなどを出力できる
+
     if params[:order][:address_option] == "0"
      @order.postal_code = current_customer.postal_code
      @order.address = current_customer.address
-     @order.name = current_customer.first_name + current_customer.last_name
+     @order.name = current_customer.last_name + current_customer.first_name
 
     elsif params[:order][:address_option] == "1"
       @address = Address.find(params[:order][:address_id])
@@ -19,11 +19,11 @@ class Public::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
 
-    # 新規住所入力 [:address_option]=="2"としてデータをhtmlから受ける
-    elsif params[:oerder][:address_option] == "2"
+    # 新規住所入力 address=="2"としてデータをhtmlから受ける
+    elsif params[:order][:address_option] == "2"
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
-      @order.name = params[:prder][:name]
+      @order.name = params[:order][:name]
 
     else
       render 'new'
@@ -35,13 +35,13 @@ class Public::OrdersController < ApplicationController
   def comfilm
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save
+    @order.save!
 
     current_customer.cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
       @order_detail.item_id = cart_item.item_id#商品idを注文詳細idに代入
       @order_detail.amount = cart_item.amount#商品の個数を注文詳細に代入
-      @order_detail.tax_included_plrice = cart_item.item.with_tax_price#消費税込みの値段
+      @order_detail.price = cart_item.item.with_tax_price#消費税込みの値段
       @order_detail.order_id = @order.id #商品詳細に注文IDを紐付け
       @order_detail.save
     end
@@ -59,12 +59,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def histry
+    @order = Order.find(params[:id])
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:customer_id, :payment_method, :postal_code, :address, :name, :postage, :total, :status)
+    params.require(:order).permit(:customer_id, :payment_method, :postal_code, :address, :name, :postage, :total, :status, :create_at, :total_price)
   end
 
 end
