@@ -9,7 +9,7 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details
     @order.update(order_params)
 
-    if order.status == "入金確認"
+    if @order.status == "入金確認"
       @order_details.update_all(making_status: "制作待ち")
     end
 

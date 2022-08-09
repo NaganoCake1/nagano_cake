@@ -29,6 +29,7 @@ class Public::OrdersController < ApplicationController
       render 'new'
     end
     @cart_items = current_customer.cart_items.all
+    @order.customer_id = current_customer.id
 
   end
 
@@ -39,10 +40,10 @@ class Public::OrdersController < ApplicationController
 
     current_customer.cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
+      @order_detail.order_id = @order.id #商品詳細に注文IDを紐付け
       @order_detail.item_id = cart_item.item_id#商品idを注文詳細idに代入
       @order_detail.amount = cart_item.amount#商品の個数を注文詳細に代入
       @order_detail.price = cart_item.item.with_tax_price#消費税込みの値段
-      @order_detail.order_id = @order.id #商品詳細に注文IDを紐付け
       @order_detail.save
     end
 
@@ -60,6 +61,7 @@ class Public::OrdersController < ApplicationController
 
   def histry
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   private

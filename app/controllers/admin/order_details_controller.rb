@@ -1,7 +1,7 @@
 class Admin::OrderDetailsController < ApplicationController
   def update
-    @order_details = OrderDetails.find(params[:id])
-    @order = @order_detail.order# 注文商品から注文テーブルの呼び出し（何度も呼び出すのは処理が増える為）
+    @order_detail = OrderDetail.find(params[:id])
+    @order = @order_detail.order# 注文商品から注文テーブルの呼び出し（何度も呼び出すのは処理が増える）
     @order_detail.update(order_detail_params)
 
     if @order_detail.making_status == "製作中"
