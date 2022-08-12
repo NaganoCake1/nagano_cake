@@ -15,99 +15,116 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-lg navbar-white bg-white">
-        <div class="container">
-          <a class="navbar-brand" href="/">
-            <span>LOGO</span>
-          </a>
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+              <div class="d-flex flex-wrap bd-highlight mb-3">
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <div class="card-header">
-              <ul class="navbar-nav ml-auto">
+                <div class="mr-auto pl-5 bd-highlight">
+                  <a class="navbar-brand p-3" href="/">
+                      <%= image_tag('cake.jpg', size:"100x80") %>
+                  </a>
+                </div>
+
+
+
+
                 <% if admin_signed_in? %>
-                  <li>
+
+                  <div class="p-2 bd-highlight">
                     <%= link_to admin_items_path, class: "nav-link active" do %>
-                      商品一覧
+                      <button type="button" class="btn btn-outline-secondary">商品一覧</button>
                     <% end %>
-                  </li>
-                  <li>
+                  </div>
+
+                  <div class="p-2 bd-highlight">
                     <%= link_to admin_customers_path, class: "nav-link active" do %>
-                      会員一覧
+                      <button type="button" class="btn btn-outline-secondary">会員一覧</button>
                     <% end %>
-                  </li>
-                  <li>
-                    <%= link_to admin_orders_path, class: "nav-link active" do %>
-                      注文履歴一覧
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to admin_genres_path, class: "nav-link active" do %>
-                      ジャンル一覧
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to destroy_admin_session_path,method: :delete, class: "nav-link active" do %>
-                      ログアウト
-                    <% end %>
-                  </li>
+                  </div>
+
+                    <div class="p-2 bd-highlight">
+                      <%= link_to admin_orders_path, class: "nav-link active" do %>
+                        <button type="button" class="btn btn-outline-secondary">注文履歴一覧</button>
+                      <% end %>
+                    </div>
+
+                    <div class="p-2 bd-highlight">
+                      <%= link_to admin_genres_path, class: "nav-link active" do %>
+                        <button type="button" class="btn btn-outline-secondary">ジャンル一覧</button>
+                      <% end %>
+                    </div>
+
+                    <div class="p-2 bd-highlight">
+                      <%= link_to destroy_admin_session_path,method: :delete, class: "nav-link active" do %>
+                        <button type="button" class="btn btn-outline-secondary">ログアウト</button>
+                      <% end %>
+                    </div>
 
                 <% elsif customer_signed_in? %>
-                  ようこそ<%= current_customer.last_name %><%= current_customer.first_name %>さん！
-                  <li>
-                    <%= link_to public_customer_path(current_customer), class: "nav-link active" do %>
-                      マイページ
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to public_items_path(current_customer), class: "nav-link active" do %>
-                      商品一覧
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to public_cart_items_path(current_customer), class: "nav-link active" do %>
-                      カート
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to destroy_customer_session_path,method: :delete, class: "nav-link active" do %>
-                      ログアウト
-                    <% end %>
-                  </li>
 
+                  <div class="center-block pt-5 pr-5">
+                    ようこそ<%= current_customer.last_name %><%= current_customer.first_name %>さん！
+                  </div>
+
+                    <div class="p-2 bd-highlight">
+                      <%= link_to public_customer_path(current_customer), class: "nav-link active" do %>
+                        <button type="button" class="btn btn-outline-secondary">マイページ</button>
+                      <% end %>
+                    </div>
+
+                    <div class="p-2 bd-highlight">
+                      <%= link_to public_items_path(current_customer), class: "nav-link active" do %>
+                        <button type="button" class="btn btn-outline-secondary">商品一覧</button>
+                      <% end %>
+                    </div>
+
+                    <div class="p-2 bd-highlight">
+                      <%= link_to public_cart_items_path(current_customer), class: "nav-link active" do %>
+                        <button type="button" class="btn btn-outline-secondary">カート</button>
+                      <% end %>
+                    </div>
+
+                    <div class="p-2 bd-highlight">
+                     <%= link_to destroy_customer_session_path,method: :delete, class: "nav-link active" do %>
+                        <button type="button" class="btn btn-outline-secondary">ログアウト</button>
+                      <% end %>
+                      </div>
 
                 <% else %>
-                  <li>
-                    <%= link_to public_about_path, class: "nav-link active" do %>
-                      About
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to public_items_path, class: "nav-link active" do %>
-                      商品一覧
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to new_customer_registration_path, class: "nav-link active" do %>
-                      新規登録
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to customer_session_path, class: "nav-link active" do %>
-                      ログイン
-                    <% end %>
-                  </li>
+
+                    <div class="p-2 bd-highlight">
+                      <%= link_to public_about_path, class: "nav-link active" do %>
+                        <button type="button" class="btn btn-outline-secondary">About</button>
+                      <% end %>
+                    </div>
+
+                    <div class="p-2 bd-highlight">
+                      <%= link_to public_items_path, class: "nav-link active" do %>
+                        <button type="button" class="btn btn-outline-secondary">商品一覧</button>
+                      <% end %>
+                    </div>
+
+                    <div class="p-2 bd-highlight">
+                      <%= link_to new_customer_registration_path, class: "nav-link active" do %>
+                        <button type="button" class="btn btn-outline-secondary">新規登録</button>
+                      <% end %>
+                    </div>
+
+                    <div class="p-2 bd-highlight">
+                      <%= link_to customer_session_path, class: "nav-link active" do %>
+                        <button type="button" class="btn btn-outline-secondary">ログイン</button>
+                      <% end %>
+                    </div>
+
                 <% end %>
 
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
+
+                <form class="p-2 bd-highlight">
+                  <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                </form>
+
+              </div>
+
+
 
     <%= yield %>
 
