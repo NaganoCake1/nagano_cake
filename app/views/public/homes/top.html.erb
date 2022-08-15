@@ -1,16 +1,26 @@
-ようこそ、ながのCAKEへ！</br>
-このサイトは、ケーキ販売のECサイトになります。</br>
-会員でない方も商品の閲覧はできますが、</br>
-購入には会員登録が必要になります</br>
+<div class="container">
+  <div class="row py-3 pr-2 pl-5">
+    ようこそ、ながのCAKEへ！</br>
+    このサイトは、ケーキ販売のECサイトになります。</br>
+    会員でない方も商品の閲覧はできますが、</br>
+    購入には会員登録が必要になります</br>
+  </div>
 
-<h2>新着商品</h2>
+    <h2>新着商品</h2>
 
-<% @items.first(4).each do |item| %>
-  <%= link_to public_item_path(item.id), class: "nav-link active" do %>
-    <%= image_tag item.image, size: "80x50" %>
-  <% end %>
-  <%= item.name %>
-  <%= (item.price*1.1).floor %>
-<% end %>
 
-<%= link_to "全ての商品を見る>", public_items_path %>
+        <div class="row">
+        <% @items.first(4).each do |item| %>
+          <div class="col-md-4">
+            <%= link_to public_item_path(item.id), class: "nav-link active" do %>
+              <%= image_tag item.image, size: "80x50" %>
+            <% end %>
+            <%= item.name %></br>
+            ¥<%= (item.price*1.1).floor %>
+          </div>
+        <% end %>
+        </div>
+    <div class="d-flex flex-row-reverse bd-highlight">
+      <%= link_to "全ての商品を見る>", public_items_path %>
+    </div>
+</div>

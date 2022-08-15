@@ -1,17 +1,18 @@
 <div class="container">
   <div class="row">
-
     <h2>商品一覧</h2>
+    (全<%= Item.count %>件)
+  </div>
 
+  <div class="row">
     <% @items.each do |item| %>
-    <div class="col-md-3">
-      <%= link_to public_item_path(item.id), class: "nav-link active" do %>
-        <%= image_tag item.image, size: "80x50" %>
-      <% end %>
-
-      <%= item.name %>
-      <%= (item.price*1.1).floor %>
-    </div>
+      <div class="col-md-3">
+        <%= link_to public_item_path(item.id), class: "nav-link active" do %>
+          <%= image_tag item.image, size: "80x50" %>
+        <% end %>
+        <%= item.name %></br>
+        ¥<%= (item.price*1.1).floor %>
+      </div>
     <% end %>
 
     <%= paginate @items %>

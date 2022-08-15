@@ -1,37 +1,41 @@
-<%= image_tag @item.image, size: "200x200" %>
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-md-4">
+      <%= image_tag @item.image, size: "200x150" %>
+    </div>
 
-<table class="table table-hover table-inverse">
-  <tbody>
+    <div class="col-md-5">
+      <table>
+        <tr>
+          <td>
+            <h4><strong><%= @item.name %></strong></h4>
+          </td>
+        </tr>
 
-    <tr>
-      <td>
-        <%= @item.name %>
-      </td>
-    </tr>
+        <tr>
+          <td>
+            <%= @item.introduction %>
+          </td>
+        </tr>
 
-    <tr>
-      <td>
-        <%= @item.introduction %>
-      </td>
-    </tr>
+        <div class="d-flex align-items-end pt-3">
+          <tr>
+            <td>
+              ¥<%= (@item.price*1.1).floor %>(税込)
+            </td>
+          </tr>
 
-    <tr>
-      <td>
-        ¥<%= (@item.price*1.1).floor %>(税込)
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <%= form_with model: @cart_item, url: public_cart_items_path, method: :post, local:true do |f| %>
-          <%= f.select :amount, *[1..10], { include_blank: '個数選択' } %>
-          <%= f.hidden_field :item_id, :value => @item.id  %>
-          <%= f.submit "カートに入れる" %>
-
-        <% end %>
-
-      </td>
-    </tr>
-
-
-  </tbody>
+          <tr>
+            <td>
+              <%= form_with model: @cart_item, url: public_cart_items_path, method: :post, local:true do |f| %>
+                <%= f.select :amount, *[1..10], { include_blank: '個数選択' } %>
+                <%= f.hidden_field :item_id, :value => @item.id  %>
+                <%= f.submit "カートに入れる",class: "btn btn-success" %>
+              <% end %>
+            </td>
+          </tr>
+        </div>
+      </table>
+    </div>
+  </div>
+</div>
