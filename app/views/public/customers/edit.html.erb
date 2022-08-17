@@ -1,71 +1,86 @@
-<h2> 会員情報編集</h2>
+<div class="container">
 
-<table class="table table-hover table-inverse">
-  <tbody>
-    <%= form_with model: [:admin, @customer], local:true do |f| %>
+  <div class="row">
+    <div class="col-2 p-3">
+      <h4 class="table-active">
+        <div style="text-align: center">会員情報編集</div>
+      </h4>
+    </div>
+  </div>
 
-    <tr>
-      <td>
-        会員ID
-        <%= @customer.id %>
-      </td>
-    </tr>
+    <table>
+      <%= form_with model: [:admin, @customer], local:true do |f| %>
 
-    <tr>
-      <td>
-        氏名
-        <%= f.text_field :first_name %>
-        <%= f.text_field :last_name %>
-      </td>
-    </tr>
+    <div class="row">
+      <tr>
+        <th class="col-3 py-2 pr-4">氏名</th>
+        <td>
+          <%= f.text_field :last_name %>
+          <%= f.text_field :first_name %>
+        </td>
+      </tr>
+    </div>
 
-    <tr>
-      <td>
-        フリガナ
-        <%= f.text_field :first_name_kana %>
-        <%= f.text_field :last_name_kana %>
-      </td>
-    </tr>
+    <div class="row">
+      <tr>
+        <th class="col-3 py-2 pr-4">フリガナ</div>
+        <td>
+          <%= f.text_field :last_name_kana %>
+          <%= f.text_field :first_name_kana %>
+        </td>
+      </tr>
+    </div>
 
-    <tr>
-      <td>
-        郵便番号
-        <%= f.text_field :postal_code %>
-      </td>
-    </tr>
+    <div class="row">
+      <tr>
+        <th class="col-3 py-2 pr-4">郵便番号</div>
+        <td>
+          <%= f.text_field :postal_code %>
+        </td>
+      </tr>
+    </div>
 
-    <tr>
-      <td>
-        住所
-        <%= f.text_field :adress %>
-      </td>
-    </tr>
+    <div class="row">
+      <tr>
+        <th class="col-3 py-2 pr-4">住所</div>
+        <td>
+          <%= f.text_field :address, size: "60x20" %>
+        </td>
+      </tr>
+    </div>
 
-    <tr>
-      <td>
-        電話番号
-        <%= f.text_field :telephone_number %>
-      </td>
-    </tr>
+    <div class="row">
+      <tr>
+        <th class="col-3 py-2 pr-4">電話番号</div>
+        <td>
+          <%= f.text_field :telephone_number %>
+        </td>
+      </tr>
+    </div>
 
-    <tr>
-      <td>
-        メールアドレス
-        <%= f.email_field :email %>
-      </td>
-    </tr>
+    <div class="row">
+      <tr>
+        <th class="col-3 py-2 pr-4">メールアドレス</div>
+        <td>
+          <%= f.email_field :email %>
+        </td>
+      </tr>
+    </div>
+  </div>
 
-    <tr>
-      <td>
-        <%= f.submit "編集内容を保存" %>
-        <%= link_to "退会する", customer_registration_path method: :delete %>
-      </td>
-    </tr>
+    <div class="row p-3">
+      <tr>
+        <th></th>
+        <td><%= f.submit "編集内容を保存", class: "btn btn-success" %></td>
+
+        <td class="col-2 offset-3">
+          <%= link_to "退会する", public_unsubscribe_path, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    </div>
 
     <% end %>
-
-  </tbody>
-
-</table>
+  </table>
+</div>
 
 

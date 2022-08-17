@@ -1,32 +1,41 @@
-<h4>注文履歴一覧</h4>
-<table>
-  <thaed>
-    <th>注文日</th>
-    <th>配送先</th>
-    <th>注文商品</th>
-    <th>支払金額</th>
-    <th>ステータス</th>
-    <th>注文詳細</th>
-  </thaed>
+<div class="container">
+  <div class="row">
+    <div class="col-2 p-3">
+      <h4 class="table-active">
+        <div style="text-align: center"><h4>注文履歴一覧</h4></div>
+      </h4>
+    </div>
+  </div>
 
-  <tbody>
-    <% @orders.each do |order| %>
-    <tr>
-      <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-      <td>
-        <%= order.postal_code %></br>
-        <%= order.address %></br>
-        <%= order.name %>
-      </td>
-      <td>
-        <% order.items.each do |item| %>
-        <%= item.name %></br>
-        <% end %>
-      </td>
-      <td><%= order.total_price %>円</td>
-      <td><%= order.status.keys_i18n %></td>
-      <td><%= link_to "表示する", public_order_histry_path(order.id) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <table class="table table-bordered">
+    <thead class="table-active">
+      <th class="col-1">注文日</th>
+      <th class="col-4">配送先</th>
+      <th class="col-1">注文商品</th>
+      <th class="col-1">支払金額</th>
+      <th class="col-1">ステータス</th>
+      <th class="col-1">注文詳細</th>
+    </thaed>
+
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+        <td>
+          〒<%= order.postal_code %></br>
+          <%= order.address %></br>
+          <%= order.name %>
+        </td>
+        <td>
+          <% order.items.each do |item| %>
+          <%= item.name %></br>
+          <% end %>
+        </td>
+        <td><%= order.total_price %>円</td>
+        <td><%#= order.status.keys_i18n %></td>
+        <td><%= link_to "表示する", public_order_histry_path(order.id), class: "btn btn-primary" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
