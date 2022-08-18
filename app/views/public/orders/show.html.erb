@@ -37,6 +37,10 @@
       </table>
     </div>
 
+    <% @order_details.each do |order_detail| %>
+      <% total += order_detail.item.with_tax_price*order_detail.amount %>
+    <% end %>
+
     <div class="col-4">
       <h5>請求情報</h5>
         <table class="table table-bordered">
@@ -71,7 +75,6 @@
       <td><%= order_detail.price %></td>
       <td><%= order_detail.amount %></td>
       <td><%= order_detail.price*order_detail.amount %></td>
-      <% total += order_detail.item.with_tax_price*order_detail.amount %>
     </tr>
     <% end %>
   </table>

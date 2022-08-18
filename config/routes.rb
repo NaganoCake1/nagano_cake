@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       post "orders/check" => 'orders#check'
       post "orders/comfilm" => 'orders#comfilm'
       get "orders/complete" => 'orders#complete'
-      get "orders/:id" => 'orders#histry', as: 'order/histry'
+      get "orders/:id" => 'orders#show', as: 'order/histry'
 
       resources :customers
       get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'

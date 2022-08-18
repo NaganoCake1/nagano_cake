@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 2022_07_22_080616) do
     t.integer "postage", null: false
     t.integer "total_price", null: false
     t.integer "payment_method", null: false
-    t.boolean "status", default: false, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
