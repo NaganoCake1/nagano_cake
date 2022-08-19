@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_with model: @customer, url: customer_session_path do |f| %>
     <div class="row pb-2">
       <div class="col-2 offset-1">
         <%= f.label :"メールアドレス" %>

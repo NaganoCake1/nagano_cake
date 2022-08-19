@@ -1,15 +1,27 @@
-<h2>商品一覧</h2>
-<%= link_to "＋", new_admin_item_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-2 p-3">
+      <h4 class="table-active">
+        <div style="text-align: center">商品一覧</div>
+      </h4>
+    </div>
+    <div class="col-2 offset-7 p-3">
+      <div class="d-flex justify-content-end">
+      <%= link_to "＋", new_admin_item_path, class: "btn btn-light rounded-circle.p-0 width:2rem; height:2rem;" %>
+      </div>
+    </div>
+  </div>
 
-  <table class="table table-hover table-inverse">
+
+  <table class="table table-borderless">
 
     <thead>
-      <tr>
+      <tr class="table-active">
         <th>商品ID</th>
         <th>商品名</th>
         <th>税抜価格</th>
         <th>ジャンル</th>
-        <th><%#ステータス%></th>
+        <th>ステータス</th>
       </tr>
     </thead>
 
@@ -20,7 +32,12 @@
         <td><%= link_to item.name, admin_item_path(item.id) %></td>
         <td><%= item.price %></td>
         <td><%= item.genre.name %></td>
+        <td><%= item.is_active %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
+
+  <%= paginate @items %>
+
+</div>

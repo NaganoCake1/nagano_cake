@@ -1,49 +1,64 @@
-<h2>商品編集</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-2 p-3">
+      <h4 class="table-active">
+        <div style="text-align: center">商品新規登録</div>
+      </h4>
+    </div>
+  </div>
 
-<table class="table table-hover table-inverse">
-  <tbody>
-    <%= form_with model: [:admin, @item], local:true do |f| %>
+  <table class="table table-borderless">
 
-    <tr>
-      <td>
-        商品画像
-        <%= f.file_field :image, accept: "image/*" %>
-      </td>
-    </tr>
+      <%= form_with model: [:admin, @item], local:true do |f| %>
 
-    <tr>
-      <td>
-        商品名
-        <%= f.text_field :name %>
-      </td>
-    </tr>
+      <tr class="row">
+        <th class="col-2 offset-1">商品画像</th>
+        <td>
+          <%= f.file_field :image, accept: "image/*" %>
+        </td>
+      </tr>
 
-    <tr>
-      <td>
-        商品説明
-        <%= f.text_area :introduction %>
-      </td>
-    </tr>
+      <tr class="row">
+        <th class="col-2 offset-1">商品名</th>
+        <td>
+          <%= f.text_field :name %>
+        </td>
+      </tr>
 
-    <tr>
-      <td>
-        ジャンル
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true %>
-      </td>
-    </tr>
+      <tr class="row">
+        <th class="col-2 offset-1">商品説明</th>
+        <td>
+          <%= f.text_area :introduction %>
+        </td>
+      </tr>
 
-    <tr>
-      <td>
-        税抜価格
-        <%= f.text_field :price %>
-      </td>
-    </tr>
+      <tr class="row">
+        <th class="col-2 offset-1">ジャンル</th>
+        <td>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true, include_blank: '選択してください' %>
+        </td>
+      </tr>
 
-    <tr>
-      <td>
-        <%= f.submit '変更を保存' %>
-      </td>
-    </tr>
+      <tr class="row">
+        <th class="col-2 offset-1">税抜価格</th>
+        <td>
+          <%= f.text_field :price %>円
+        </td>
+      </tr>
+
+      <tr class="row">
+        <th class="col-2 offset-1">販売ステータス</th>
+          <td>
+            <%= f.radio_button :is_active, :true %>
+            <%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+            <%= f.radio_button :is_active, :false %>
+            <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %></td>
+        </tr>
+
+     <tr class="row">
+        <th class="col-4"></th>
+        <td><%= f.submit '変更を保存', class: "btn btn-success" %></td>
+      </tr>
     <% end %>
 
   </tbody>

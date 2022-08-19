@@ -1,43 +1,67 @@
-<h2>商品詳細</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-2 p-3">
+      <h4 class="table-active">
+        <div style="text-align: center">商品詳細</div>
+      </h4>
+    </div>
+  </div>
 
-<%= image_tag @item.image, size: "200x200" %>
+    <div class="row">
+      <div class="col-4">
+        <%= image_tag @item.image, size: "300x200" %>
+      </div>
 
-<table class="table table-hover table-inverse">
-  <tbody>
+      <div class="col-4">
+        <table class="table table-borderless">
+          <tr>
+            <th>商品名</th>
+            <td>
+              <%= @item.name %>
+            </td>
+          </tr>
 
-    <tr>
-      <td>
-        商品名
-        <%= @item.name %>
-      </td>
-    </tr>
+          <tr>
+            <th>商品説明</th>
+            <td>
+              <%= @item.introduction %>
+            </td>
+          </tr>
 
-    <tr>
-      <td>
-        商品説明
-        <%= @item.introduction %>
-      </td>
-    </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td>
+              <%= @item.genre.name %>
+            </td>
+          </tr>
 
-    <tr>
-      <td>
-        ジャンル
-        <%= @item.genre.name %>
-      </td>
-    </tr>
+          <tr>
+            <th>税込価格</br>(税抜き価格)</th>
+            <td>
+              <%= (@item.price*1.1).floor %>
+              (<%= @item.price  %>)円
+            </td>
+          </tr>
 
-    <tr>
-      <td>
-        税込価格(税抜き価格)
-        <%= (@item.price*1.1).floor %>
-        (<%= @item.price  %>)円
-      </td>
-    </tr>
+          <tr>
+            <th>ステータス</th>
+            <td>
+              <%= @item.is_active %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
 
-    <tr>
-      <td>
-        <%= link_to "編集する", edit_admin_item_path(@item.id) %>
-      </td>
-    </tr>
+    <div class="row">
+      <div class="col-3 offset-5">
+        <tr>
+          <td>
+            <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
+          </td>
+        </tr>
+      </div>
+    </div>
 
-  </tbody>
+
+</div>
