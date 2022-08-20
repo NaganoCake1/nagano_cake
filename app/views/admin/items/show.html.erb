@@ -46,7 +46,11 @@
           <tr>
             <th>ステータス</th>
             <td>
-              <%= @item.is_active %>
+              <% if @item.is_active == true %>
+                <span>販売中</span>
+              <% else %>
+                <span>販売停止中</span>
+              <% end %>
             </td>
           </tr>
         </table>
@@ -54,7 +58,7 @@
     </div>
 
     <div class="row">
-      <div class="col-3 offset-5">
+      <div class="col-3 offset-5 py-5">
         <tr>
           <td>
             <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>

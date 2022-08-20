@@ -43,7 +43,7 @@
         <th class="col-2">注文ステータス</th>
         <td>
           <%= form_with model: @order, url: admin_order_path, local: true, method: :patch do |f| %>
-            <%= f.select :status, Order.statuses_i18n %>
+            <%= f.select :status, Order.statuses_i18n.invert %>
             <%= f.submit "更新", class: "btn btn-success" %>
           <% end %>
         </td>
