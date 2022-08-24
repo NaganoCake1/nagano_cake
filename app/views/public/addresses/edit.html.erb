@@ -7,9 +7,17 @@
     </div>
   </div>
 
+  <% if @address.errors.any? %>
+    <%= @address.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <table>
-    <%= form_with model: @address, url: public_addresses_path, local:true do |f| %>
+    <%= form_with model: @address, url: address_path, method: :patch, local:true do |f| %>
       <tr>
         <th class="col-3">郵便番号(ハイフンなし)</th>
         <td>

@@ -7,6 +7,15 @@
     </div>
   </div>
 
+  <% if @item.errors.any? %>
+    <%= @item.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <table class="table table-borderless">
 
       <%= form_with model: [:admin, @item], local:true do |f| %>

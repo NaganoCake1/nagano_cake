@@ -7,6 +7,15 @@
     </div>
   </div>
 
+  <% if @customer.errors.any? %>
+    <%= @customer.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <table class="table table-borderless">
     <%= form_with model: [:admin, @customer], local:true do |f| %>
 
@@ -81,9 +90,9 @@
       <th class="col-2 py-2 pr-4">会員ステータス</th>
       <td>
         <%= f.radio_button :is_active, :true %>
-        <%= f.label :is_active, "有効", value: true %>
-        <%= f.radio_button :is_active, false %>
-        <%= f.label :is_active, "退会", value: false %>
+        <spam>有効</spam>
+        <%= f.radio_button :is_active, :false %>
+        <span>退会</span>
       </td>
     </tr>
     </div>

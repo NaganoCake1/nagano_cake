@@ -65,19 +65,19 @@
           </div>
 
             <div class="p-2 bd-highlight">
-              <%= link_to public_customer_path(current_customer), class: "nav-link active" do %>
+              <%= link_to customer_path(current_customer), class: "nav-link active" do %>
                 <button type="button" class="btn btn-outline-secondary">マイページ</button>
               <% end %>
             </div>
 
             <div class="p-2 bd-highlight">
-              <%= link_to public_items_path(current_customer), class: "nav-link active" do %>
+              <%= link_to items_path(current_customer), class: "nav-link active" do %>
                 <button type="button" class="btn btn-outline-secondary">商品一覧</button>
               <% end %>
             </div>
 
             <div class="p-2 bd-highlight">
-              <%= link_to public_cart_items_path(current_customer), class: "nav-link active" do %>
+              <%= link_to cart_items_path(current_customer), class: "nav-link active" do %>
                 <button type="button" class="btn btn-outline-secondary">カート</button>
               <% end %>
             </div>
@@ -91,13 +91,13 @@
         <% else %>
 
             <div class="p-2 bd-highlight">
-              <%= link_to public_about_path, class: "nav-link active" do %>
+              <%= link_to about_path, class: "nav-link active" do %>
                 <button type="button" class="btn btn-outline-secondary">About</button>
               <% end %>
             </div>
 
             <div class="p-2 bd-highlight">
-              <%= link_to public_items_path, class: "nav-link active" do %>
+              <%= link_to items_path, class: "nav-link active" do %>
                 <button type="button" class="btn btn-outline-secondary">商品一覧</button>
               <% end %>
             </div>

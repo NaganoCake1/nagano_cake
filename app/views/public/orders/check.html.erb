@@ -68,7 +68,7 @@
   </div>
 
 
-  <%= form_with model: @order, url: public_orders_comfilm_path, method: :post, local: true do |f| %>
+  <%= form_with model: @order, url: orders_comfilm_path, method: :post, local: true do |f| %>
     <%= f.hidden_field :customer_id %>
     <%= f.hidden_field :postage %>
     <%= f.hidden_field :total_price %>

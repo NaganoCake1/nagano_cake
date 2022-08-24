@@ -13,7 +13,9 @@
         preparing: "発送準備中"
         shipped: "発送済み"
 
-    item:
-      is_active:
-        true: "販売中"
-        false: "販売停止中"
+    order_detail:
+      making_status:
+        making_impossible: "制作不可"
+        making_wait: "制作待ち"
+        making: "製作中"
+        making_complete: "制作完了"

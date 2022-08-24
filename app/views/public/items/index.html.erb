@@ -7,7 +7,7 @@
   <div class="row">
     <% @items.each do |item| %>
       <div class="col-md-3">
-        <%= link_to public_item_path(item.id), class: "nav-link active" do %>
+        <%= link_to item_path(item.id), class: "nav-link active" do %>
           <%= image_tag item.image, size: "80x50" %>
         <% end %>
         <%= item.name %></br>

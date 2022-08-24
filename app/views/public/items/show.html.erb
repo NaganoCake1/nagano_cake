@@ -1,4 +1,14 @@
 <div class="container">
+
+  <% if @item.errors.any? %>
+    <%= @item.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <div class="row pt-5">
     <div class="col-md-4">
       <%= image_tag @item.image, size: "200x150" %>
@@ -27,7 +37,7 @@
 
           <tr>
             <td>
-              <%= form_with model: @cart_item, url: public_cart_items_path, method: :post, local:true do |f| %>
+              <%= form_with model: @cart_item, url: cart_items_path, method: :post, local:true do |f| %>
                 <%= f.select :amount, *[1..10], { include_blank: '個数選択' } %>
                 <%= f.hidden_field :item_id, :value => @item.id  %>
                 <%= f.submit "カートに入れる",class: "btn btn-success" %>

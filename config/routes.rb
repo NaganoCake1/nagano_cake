@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-
-    #scope module: :public do
+    scope module: :public do
 
       resources :cart_items,only: [:index, :create, :update, :destroy] do
         collection do
@@ -33,23 +31,12 @@ Rails.application.routes.draw do
       root to: 'homes#top'
       get "/home/about" => "homes#about", as: "about"
 
-    #end
-
-  end
+    end
 
 
   namespace :admin do
-    resources :order_details
-
-    resources :orders
-
+    resources :order_details, :orders, :customers, :customers, :items, :genres
     root to: 'homes#top'
-
-    resources :customers
-
-    resources :items
-
-    resources :genres
   end
 
   devise_for :customers,skip: [:passwords], controllers: {

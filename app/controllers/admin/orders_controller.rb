@@ -9,8 +9,8 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details
     @order.update(order_params)
 
-    if @order.status == "入金確認"
-      @order_details.update_all(making_status: "制作待ち")
+    if @order.status == 0
+      @order_details.update_all(making_status: 1)
     end
 
     redirect_to admin_order_path(@order)

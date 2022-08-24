@@ -33,7 +33,7 @@
         </td>
         <td><%= order.total_price %>円</td>
         <td><%= order.status_i18n %></td>
-        <td><%= link_to "表示する", public_order_histry_path(order.id), class: "btn btn-primary" %></td>
+        <td><%= link_to "表示する", order_histry_path(order.id), class: "btn btn-primary" %></td>
       </tr>
       <% end %>
     </tbody>

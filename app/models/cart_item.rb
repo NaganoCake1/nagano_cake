@@ -7,4 +7,7 @@ class CartItem < ApplicationRecord
   def subtotal
     item.with_tax_price * amount
   end
+
+  validates :amount, presence: true
+
 end
