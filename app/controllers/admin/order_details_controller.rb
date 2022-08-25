@@ -1,4 +1,6 @@
 class Admin::OrderDetailsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def update
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order# 注文商品から注文テーブルの呼び出し

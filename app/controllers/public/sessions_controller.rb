@@ -23,9 +23,9 @@ class Public::SessionsController < Devise::SessionsController
   protected
 
   def customer_state
-    @customer = Customer.find_by(email: params[:customer][:email])
+    @customer = Customer.find_by(email: params[:email])
     return if !@customer
-    if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == false)
+    if @customer.valid_password?(params[:password]) && (@customer.is_deleted == false)
       redirect_to new_customer_registration_path
     end
 
@@ -33,7 +33,7 @@ class Public::SessionsController < Devise::SessionsController
       root_path
   end
   def after_sign_out_path_for(resource)
-      new_session_path
+      new_customer_session_path
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
