@@ -7,28 +7,19 @@
     </div>
   </div>
 
-  <% if @order.errors.any? %>
-    <%= @order.errors.count %>件のエラーが発生しました
+  <%= form_with model: @order, url: orders_check_path, method: :post, local: true do |f| %>
+
+  <h4><strong>支払方法</strong></h4>
     <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+      <li>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(0), required:true %>
+        <strong><%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %></strong>
+      </li>
+      <li>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(1), required:true %>
+        <strong><%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %></strong>
+      </li>
     </ul>
-  <% end %>
-
-<%= form_with model: @order, url: orders_check_path, method: :post, local: true do |f| %>
-
-<h4><strong>支払方法</strong></h4>
-  <ul>
-    <li>
-      <%= f.radio_button :payment_method, Order.payment_methods.key(0), required:true %>
-      <strong><%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %></strong>
-    </li>
-    <li>
-      <%= f.radio_button :payment_method, Order.payment_methods.key(1), required:true %>
-      <strong><%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %></strong>
-    </li>
-  </ul>
 
 
   <h4><strong>お届け先</strong></h4>
@@ -52,6 +43,10 @@
           <li><%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %></li>
         </ul>
       </li>
+
+      <div class="text-danger">
+        <%= render 'public/shared/flash_message' %>
+      </div>
 
       <li>
         <%= f.radio_button :address_option, 2, required:true %>
@@ -79,6 +74,6 @@
       </li>
     </ul>
 
-  <div style="text-align: center"><%= f.submit "確認画面へ進む", class: "btn btn-primary" %></div>
-<% end %>
+    <div style="text-align: center"><%= f.submit "確認画面へ進む", class: "btn btn-primary" %></div>
+  <% end %>
 </div>

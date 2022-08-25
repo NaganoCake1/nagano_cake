@@ -21,9 +21,14 @@ class Public::OrdersController < ApplicationController
 
     # 新規住所入力 address=="2"としてデータをhtmlから受ける
     elsif params[:order][:address_option] == "2"
-      @order.postal_code = params[:order][:postal_code]
-      @order.address = params[:order][:address]
-      @order.name = params[:order][:name]       #if分を用いて、空欄の時にエラー文をフラッシュメッセージで表示させる
+      if params[:order][:postal_code] != "" && params[:order][:address] != "" && params[:order][:name] != ""
+        @order.postal_code = params[:order][:postal_code]
+        @order.address = params[:order][:address]
+        @order.name = params[:order][:name]       #if分を用いて、空欄の時にエラー文をフラッシュメッセージで表示させる
+      else
+        flash.now[:alert] = "未入力の箇所があります。"
+        render :new
+      end
 
     else
       render 'new'
