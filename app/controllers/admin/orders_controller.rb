@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
@@ -11,8 +11,8 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details
     @order.update(order_params)
 
-    if @order.status == 0
-      @order_details.update_all(making_status: 1)
+    if @order.status == "paid_check"
+      @order_details.update_all(making_status: "making_wait")
     end
 
     redirect_to admin_order_path(@order)
